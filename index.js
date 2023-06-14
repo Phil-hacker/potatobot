@@ -7,11 +7,12 @@ const token = process.env.mode==='DEV' ? process.env.dev_potatotoken : process.e
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
+
 client.once(Events.ClientReady, async c => {
 	c.rest = new REST().setToken(token);
 	console.info(`Ready! Logged in as ${c.user.tag}`);
 	await attachEvents(c);
-	await loadCommands(c);
+	if(process.argv.find(a=>a==='reload')) await loadCommands(c);
 });
 
 client.login(token);
