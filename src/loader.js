@@ -18,7 +18,7 @@ const addCommand = async (client, path) => {
     const command = await import(`file://${path}`);
     const config = await command.config(client);
     client.commands[config.name]=command.run(client);
-    await client.rest.put(Routes.applicationCommands(client.application.id), {body: [config]});
+    if(process.argv.find(a=>a==='reload')) await client.rest.put(Routes.applicationCommands(client.application.id), {body: [config]});
 }
 
 const loadCommands = async client => {

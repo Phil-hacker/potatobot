@@ -12,7 +12,7 @@ client.once(Events.ClientReady, async c => {
 	c.rest = new REST().setToken(token);
 	console.info(`Ready! Logged in as ${c.user.tag}`);
 	await attachEvents(c);
-	if(process.argv.find(a=>a==='reload')) await loadCommands(c);
+	await loadCommands(c);
 });
 
 client.login(token);
