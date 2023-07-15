@@ -1,0 +1,1 @@
+export default (boens:number) => new Promise(resolve => setTimeout(resolve, boens));

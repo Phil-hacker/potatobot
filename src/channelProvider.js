@@ -7,4 +7,4 @@ const channelProvider = {
 }
 
 
-export channelProvider;
+export { channelProvider };
